@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>延时提示框</title>
+	<style type="text/css">
+		div{margin:20px;width:100px;height:100px;background:red;float:left;}
+		#div2{display:none;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var div1=document.getElementsByTagName('div')[0];
+			var div2=document.getElementsByTagName('div')[1];
+			var timer=null;
+
+			div1.onmouseover=div2.onmouseover=function(){
+				clearTimeout(timer);
+				div2.style.display="block";
+			}
+			div1.onmouseout=div2.onmouseout=function(){
+				timer=setTimeout(function(){
+					div2.style.display="none";
+				},1000);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div></div>
+	<div id="div2"></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分享到</title>
+	<style type="text/css">
+		div{width:100px;height:100px;position:absolute;background:red;left:-100px;}
+		span{position:absolute;height:20px;width:20px;top:50px;right:-20px;background:blue;line-height:20px;}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oDiv=document.getElementById('div1');
+		var timer=null;
+		
+
+		function move(iTarget){
+			clearInterval(timer);
+			var speed=0;
+			timer=setInterval(function(){
+				if(oDiv.offsetLeft>iTarget){
+					speed=-10;
+				}else{
+					speed=10;
+				}
+				if(oDiv.offsetLeft==iTarget){
+					clearInterval(timer);
+				}else{
+					oDiv.style.left=oDiv.offsetLeft+speed+'px';
+				}
+			},30);
+		}
+		oDiv.onmouseover=function(){
+			move(0);
+		}
+		oDiv.onmouseout=function(){
+			move(-100);
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<span id="one"></span>
+	</div>
+</body>
+</html>

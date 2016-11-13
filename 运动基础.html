@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>运动基础</title>
+	<style type="text/css">
+		div{width:100px;height:100px;background:red;position:absolute;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			function startMove(iTarget){
+			var oDiv=document.getElementById('div1');
+			var oBtn=document.getElementById('btn1');
+			var timer=null;
+
+			oBtn.onclick=function(){
+				if(oDiv.offsetLeft>iTarget){
+					speed=-10;
+				}else{
+					speed=10;
+				}
+				clearInterval(timer);
+				timer=setInterval(function(){
+					if(oDiv.offsetLeft>=iTarget){
+						clearInterval(timer);
+					}else{
+						oDiv.style.left=oDiv.offsetLeft+speed+'px';
+					}
+					
+				},30);
+			};
+		}
+		var one=window.prompt("请输入速度值",5);
+		var two=parseInt(one);
+		startMove(300,two);
+	};
+	</script>
+</head>
+<body>
+	<button id="btn1">开始运动</button>
+	<div id="div1"></div>
+</body>
+</html>

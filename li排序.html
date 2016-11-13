@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>li排序</title>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl=document.getElementsByTagName('ul')[0];
+			var oBtn=document.getElementsByTagName('button')[0];
+
+			oBtn.onclick=function(){
+				var aLi=oUl.getElementsByTagName('li');
+				var arr=[];
+
+				for(var i=0;i<aLi.length;i++){
+					arr[i]=aLi[i];
+				}
+				arr.sort(function(n1,n2){
+					var n1=parseInt(n1.innerHTML);
+					var n2=parseInt(n2.innerHTML);
+					return n1-n2;
+				});
+
+				for(var i=0;i<arr.length;i++){
+					oUl.appendChild(arr[i]);
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li>15</li>
+		<li>3</li>
+		<li>8</li>
+		<li>56</li>
+	</ul>
+	<button>排序</button>
+</body>
+</html>
