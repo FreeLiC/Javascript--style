@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对联悬浮框</title>
+	<style type="text/css">
+		div{width:100px;height:100px;background:red;position:absolute;right:0px;bottom:0px;};
+	</style>
+	<script type="text/javascript">
+		window.onscroll=function(){
+			var oDiv=document.getElementById('div1');
+			var scroll=document.documentElement.scrollTop||document.body.scrollTop;
+			move((document.documentElement.clientHeight-oDiv.offsetHeight)/2+scroll);
+		};
+		var timer=null;
+		function move(iTarget){
+				var oDiv=document.getElementById('div1');
+				clearInterval(timer);
+				timer=setInterval(function(){
+					var speed=(iTarget-oDiv.offsetTop)/4;
+					speed=speed>0?Math.ceil(speed):Math.floor(speed);
+
+					if(oDiv.offsetTop==iTarget){
+						clearInterval(timer);
+					}else{
+						oDiv.style.top=oDiv.offsetTop+speed+'px';
+					}
+				},30);
+			}
+	</script>
+</head>
+<body style="height:2000px;">
+	<div id="div1"></div>
+</body>
+</html>
